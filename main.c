@@ -74,8 +74,7 @@ int main() {
             texto[strcspn(texto, "\n")] = 0;
             int tamanho_original, tamanho_codificado;
             codificar(texto, lista_codigos, &tamanho_original, &tamanho_codificado);
-            double taxa_compressao = calcular_taxa_compressao(tamanho_original, tamanho_codificado);
-            printf("Taxa de compressao: %.2f%%\n", taxa_compressao);
+            calcular_taxas_compressao(texto, tamanho_codificado, arvore->numero_de_caracteres);
         } else if (strcmp(option, "dec") == 0) {
             char bits[MAX_SIZE];
             printf("Bits Decodificados: ");

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "huffman.h"
 
 void caminho_nodo(t_nodo *nodo, char *caminho) {
@@ -153,9 +154,13 @@ void codificar(char *sequencia, lista_huffman *lista_codigos, int *tamanho_origi
     printf("\n");
 }
 
-double calcular_taxa_compressao(int tamanho_original, int tamanho_codificado) {
-    if (tamanho_original == 0) {
-        return 0.0;
-    }
-    return (1.0 - (double)tamanho_codificado / tamanho_original) * 100.0;
+void calcular_taxas_compressao(char *texto, int tamanho_codificado, int num_caracteres_distintos) {
+    int bits_originais = strlen(texto) - 1;
+    int minBits = (int)ceil(log2(num_caracteres_distintos)) * bits_originais; // Correção aqui
+
+    double taxa_8bits = (double)tamanho_codificado / bits_originais * 100.0 / 8;
+    double taxa_min_bits = (double)tamanho_codificado / minBits * 100.0;
+
+    printf("Taxa de compressao (8 bits): %.2f%%\n", taxa_8bits);
+    printf("Taxa de compressao (bits minimos): %.2f%%\n", taxa_min_bits);
 }

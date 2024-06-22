@@ -13,6 +13,6 @@ void limpar_lista_codigos(lista_huffman *lista_codigos);
 void destruir_lista_codigos(lista_huffman *lista_codigos);
 void decodificar(char *sequencia, lista_huffman *lista_codigos, t_arvore *arvore);
 void codificar(char *sequencia, lista_huffman *lista_codigos, int *tamanho_original, int *tamanho_codificado);
-double calcular_taxa_compressao(int tamanho_original, int tamanho_codificado);
+void calcular_taxas_compressao(char *texto, int tamanho_codificado, int num_caracteres_distintos);
 
 #endif
